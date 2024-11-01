@@ -15,8 +15,8 @@
   --text-color: #1a2c32;
 }
 
-body {
+* {
   margin: 0;
-  display: flex;
-  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
 }

@@ -1,12 +1,11 @@
 import './App.css';
-import Header from './components/header/header';
+import Layout from './layout/layout';
 
 function App() {
   return (
-    <>
-      <h1>Geo quizza</h1>
-      <Header />
-    </>
+    <Layout>
+      <h1>Aqui van los componentes</h1>
+    </Layout>
   );
 }
 
