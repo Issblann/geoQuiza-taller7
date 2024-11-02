@@ -1,10 +1,11 @@
 export default {
   checkAnswer: (state, action) => {
-    const isCorrect = action.payload === state.currentFlag.name;
+    const isCorrect = action.payload === state.currentCountry.name;
     if (isCorrect) {
       state.score += 1;
     } else {
-      state.showModal = true; // Muestra el modal si es incorrecto
+      state.showModal = true;
+      state.score = 0;
     }
   },
   hideModal: (state) => {
@@ -12,6 +13,5 @@ export default {
   },
   resetScore: (state) => {
     state.score = 0;
-    state.showModal = false;
   },
 };
