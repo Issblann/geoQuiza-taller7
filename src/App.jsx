@@ -1,10 +1,11 @@
 import './App.css';
+import BotonBanderas from './components/botonBanderas/boton-banderas';
 import Layout from './layout/layout';
 
 function App() {
   return (
     <Layout>
-      <h1>Aqui van los componentes</h1>
+      <BotonBanderas />
     </Layout>
   );
 }
