@@ -1,12 +1,12 @@
-import './App.css';
-import Layout from './layout/layout';
+import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import './assets/styles/App.css';
+import AppRoutes from './routes/routes.jsx';
 
 function App() {
-  return (
-    <Layout>
-      <h1>Aqui van los componentes</h1>
-    </Layout>
-  );
+  const [count, setCount] = useState(0)
+  return <AppRoutes />;
 }
 
 export default App;

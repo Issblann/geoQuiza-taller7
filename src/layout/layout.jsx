@@ -1,14 +1,7 @@
 import React from 'react';
-import './styles/styles.css';
-import Header from '../components/header/header';
-const Layout = ({ children }) => {
-  return (
-    <div className="principal-container-layout">
-      <Header />
-      <main>{children}</main>
-      {/* footer component */}
-    </div>
-  );
+
+const Layout = () => {
+  return <div>layout</div>;
 };
 
 export default Layout;
