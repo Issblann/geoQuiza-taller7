@@ -1,11 +1,10 @@
-import '../assets/styles/home.css';
-import Footer from '../layout/Footer.jsx';
+import '../styles/footer/footer.css';
+import Footer from '../components/footer/Footer.jsx';
 
 function Home() {
     return (
         <>
-          
-            <Footer />
+            <Footer/>
         </>
     )
 } export default Home;
