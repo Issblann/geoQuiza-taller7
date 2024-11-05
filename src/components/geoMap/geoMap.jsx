@@ -4,9 +4,12 @@ import { Tooltip as ReactTooltip } from 'react-tooltip';
 import '../../styles/geoMap/styles.css';
 const GeoMap = () => {
   const [content, setContent] = useState('');
-  console.log(content);
   return (
     <div>
+      <div className="title-container">
+        <h1> MAPA DEL MUNDO </h1>
+      </div>
+
       <MapChart setTooltipContent={setContent} />
       <ReactTooltip
         id="tooltip"
