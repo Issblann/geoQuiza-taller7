@@ -20,7 +20,7 @@ const MapChart = ({ setTooltipContent }) => {
         <ZoomableGroup>
           <Sphere stroke="#E4E5E6" strokeWidth={0.5} />
           <Graticule stroke="#92cace" />
-          <Geographies geography="../../../public/JSOMAP/features.json">
+          <Geographies geography="/JSOMAP/features.json">
             {({ geographies }) =>
               geographies.map((geo) => (
                 <Geography
