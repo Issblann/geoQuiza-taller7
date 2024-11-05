@@ -15,9 +15,7 @@ const GeoMap = () => {
           color: '#fff',
           borderRadius: '10px',
         }}
-        // place="top"
         float
-        // positionStrategy="fixed"
         content={content}
       />
     </div>

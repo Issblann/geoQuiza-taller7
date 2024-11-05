@@ -1,10 +1,11 @@
 import './App.css';
+import GeoMap from './components/geoMap/geoMap';
 import Layout from './layout/layout';
-
+import 'react-tooltip/dist/react-tooltip.css';
 function App() {
   return (
     <Layout>
-      <h1>Aqui van los componentes</h1>
+      <GeoMap />
     </Layout>
   );
 }
