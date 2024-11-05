@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import '../../styles/botonBanderas/styles.css';
 import { thunks } from '../../redux/slice/trivia/thunks';
 import { actions } from '../../redux/slice/trivia/slice';
+import Modal from '../../components/modalTrivia/modal-trivia';
 const BotonBanderas = () => {
   const dispatch = useDispatch();
   const { status, error, currentCountry, incorrectOption, showModal, score } =
@@ -20,7 +21,9 @@ const BotonBanderas = () => {
 
   const handleAnswer = (selectedOption) => {
     dispatch(actions.checkAnswer(selectedOption));
-    if (!showModal) {
+    if (selectedOption !== currentCountry.name) {
+      dispatch(actions.showModal());
+    } else {
       handleNextQuestion();
     }
   };
@@ -29,6 +32,11 @@ const BotonBanderas = () => {
   // console.log(incorrectOption, 'pais incorrecto');
   console.log(score, 'puntaje');
   console.log(showModal, 'modal');
+  const closeModal = () => {
+    dispatch(actions.resetScore()); // Reinicia el puntaje
+    dispatch(actions.hideModal());  // Cierra el modal
+    handleNextQuestion();           // Genera una nueva pregunta
+  };
   return (
     <>
       {status === 'loading' && <p>Cargando...</p>}
@@ -50,6 +58,13 @@ const BotonBanderas = () => {
           </button>
         </section>
       )}
+      <Modal
+        showModal={showModal}
+        onClose={closeModal}
+        score={score}
+        currentCountry={currentCountry}
+        incorrectOption={incorrectOption}
+      />
     </>
   );
 };
