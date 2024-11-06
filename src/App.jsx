@@ -16,8 +16,10 @@ function App() {
 
   return (
     <Layout>
-      <Card />
-      <BotonBanderas />
+      <div className="my-auto w-full flex flex-col gap-6">
+        <Card />
+        <BotonBanderas />
+      </div>
     </Layout>
   );
 }
