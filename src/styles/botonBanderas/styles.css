@@ -21,3 +21,11 @@
   background-color: var(--light-color);
   color: var(--text-color);
 }
+
+.button-banderas.correct {
+  background-color: green;
+}
+
+.button-banderas.incorrect {
+  background-color: red;
+}
