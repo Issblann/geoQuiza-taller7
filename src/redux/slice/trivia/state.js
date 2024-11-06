@@ -1,6 +1,7 @@
 export default {
-  currentFlag: null,
-  options: [],
+  countryNames: [],
+  currentCountry: null,
+  incorrectOption: null,
   score: 0,
   showModal: false,
   status: 'idle',
