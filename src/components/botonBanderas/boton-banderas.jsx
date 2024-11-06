@@ -35,15 +35,12 @@ const BotonBanderas = () => {
     handleNextQuestion();
   };
 
-  // console.log(currentCountry, 'pais correcto');
-  // console.log(incorrectOption, 'pais incorrecto');
-  console.log(score, 'puntaje');
-  console.log(showModal, 'modal');
   const closeModal = () => {
-    dispatch(actions.resetScore()); // Reinicia el puntaje
-    dispatch(actions.hideModal());  // Cierra el modal
-    handleNextQuestion();           // Genera una nueva pregunta
+    dispatch(actions.resetScore());
+    dispatch(actions.hideModal());
+    handleNextQuestion();
   };
+
   const shuffleArray = (array) => {
     return array.sort(() => Math.random() - 0.5);
   };
