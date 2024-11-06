@@ -1,13 +1,23 @@
-import { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Layout from './layout/layout.jsx';
+import { useDispatch } from 'react-redux';
+import './App.css';
+import BotonBanderas from './components/botonBanderas/boton-banderas';
+import Card from './components/card/flags_card';
+import Layout from './layout/layout';
+import { useEffect } from 'react';
+import { thunks } from './redux/slice/trivia/thunks';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(thunks.fetchCountryNames()).then(() => {
+      dispatch(thunks.fetchRandomCountries());
+    });
+  }, [dispatch]);
+
   return (
     <Layout>
-      <h1>componentes</h1>
+      <Card />
+      <BotonBanderas />
     </Layout>
   );
 }
