@@ -28,11 +28,10 @@ const BotonBanderas = () => {
     dispatch(actions.checkAnswer(selectedOption));
     if (selectedOption === currentCountry.name) {
       correctSound.play();
+      handleNextQuestion();
     } else {
       incorrectSound.play();
     }
-
-    handleNextQuestion();
   };
 
   const closeModal = () => {
