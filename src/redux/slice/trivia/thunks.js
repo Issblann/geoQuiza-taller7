@@ -48,10 +48,24 @@ export const thunks = {
           currentCountry: {
             name: firstCountryResponse.data[0].name.common,
             flag: firstCountryResponse.data[0].flags.png,
+            languages: firstCountryResponse.data[0].languages,
+            region: firstCountryResponse.data[0].region,
+            subregion: firstCountryResponse.data[0].subregion,
+            capital: firstCountryResponse.data[0].capital,
+            population: firstCountryResponse.data[0].population,
+            currencies: firstCountryResponse.data[0].currencies ? Object.values(firstCountryResponse.data[0].currencies)[0].name : 'No hay moneda disponible',
+            googleMaps: firstCountryResponse.data[0].maps ? firstCountryResponse.data[0].maps.googleMaps : 'No hay enlace disponible',
           },
           incorrectOption: {
             name: secondCountryResponse.data[0].name.common,
             flag: secondCountryResponse.data[0].flags.png,
+            languages: secondCountryResponse.data[0].languages,
+            region: secondCountryResponse.data[0].region, 
+            subregion: secondCountryResponse.data[0].subregion,
+            capital: secondCountryResponse.data[0].capital,
+            population: secondCountryResponse.data[0].population,
+            currencies: secondCountryResponse.data[0].currencies ? Object.values(secondCountryResponse.data[0].currencies)[0].name : 'No hay moneda disponible',
+            googleMaps: secondCountryResponse.data[0].maps ? secondCountryResponse.data[0].maps.googleMaps : 'No hay enlace disponible',
           },
         };
       } catch (error) {
