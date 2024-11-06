@@ -1,19 +1,24 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/botonBanderas/styles.css';
 import { thunks } from '../../redux/slice/trivia/thunks';
 import { actions } from '../../redux/slice/trivia/slice';
 import Modal from '../../components/modalTrivia/modal-trivia';
 const BotonBanderas = () => {
   const dispatch = useDispatch();
+  const [shuffledOptions, setShuffledOptions] = useState([]);
   const { status, error, currentCountry, incorrectOption, showModal, score } =
     useSelector((state) => state.trivia);
 
   useEffect(() => {
-    dispatch(thunks.fetchCountryNames()).then(() => {
-      dispatch(thunks.fetchRandomCountries());
-    });
-  }, [dispatch]);
+    if (currentCountry && incorrectOption) {
+      const options = [
+        { name: currentCountry.name, isCorrect: true },
+        { name: incorrectOption.name, isCorrect: false },
+      ];
+      setShuffledOptions(shuffleArray(options));
+    }
+  }, [currentCountry, incorrectOption]);
 
   const handleNextQuestion = () => {
     dispatch(thunks.fetchRandomCountries());
@@ -21,11 +26,13 @@ const BotonBanderas = () => {
 
   const handleAnswer = (selectedOption) => {
     dispatch(actions.checkAnswer(selectedOption));
-    if (selectedOption !== currentCountry.name) {
-      dispatch(actions.showModal());
+    if (selectedOption === currentCountry.name) {
+      correctSound.play();
     } else {
-      handleNextQuestion();
+      incorrectSound.play();
     }
+
+    handleNextQuestion();
   };
 
   // console.log(currentCountry, 'pais correcto');
@@ -37,25 +44,28 @@ const BotonBanderas = () => {
     dispatch(actions.hideModal());  // Cierra el modal
     handleNextQuestion();           // Genera una nueva pregunta
   };
+  const shuffleArray = (array) => {
+    return array.sort(() => Math.random() - 0.5);
+  };
+  const correctSound = new Audio('/audio/yay-6120.mp3');
+
+  const incorrectSound = new Audio('/audio/trumpet-fail-242645.mp3');
+
   return (
     <>
       {status === 'loading' && <p>Cargando...</p>}
       {error && <p>Error: {error}</p>}
       {currentCountry && incorrectOption && (
         <section className="boton-banderas__seccion">
-          <button
-            onClick={() => handleAnswer(currentCountry.name)}
-            className="button-banderas"
-          >
-            {currentCountry.name}
-          </button>
-
-          <button
-            onClick={() => handleAnswer(incorrectOption.name)}
-            className="button-banderas"
-          >
-            {incorrectOption.name}
-          </button>
+          {shuffledOptions.map((option, index) => (
+            <button
+              key={index}
+              onClick={() => handleAnswer(option.name)}
+              className="button-banderas"
+            >
+              {option.name}
+            </button>
+          ))}
         </section>
       )}
       <Modal
