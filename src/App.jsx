@@ -1,23 +1,38 @@
-import { useDispatch } from 'react-redux';
-import './App.css';
-import BotonBanderas from './components/botonBanderas/boton-banderas';
+{/*import './App.css';
 import Layout from './layout/layout';
-import { useEffect } from 'react';
-import { thunks } from './redux/slice/trivia/thunks';
-
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(thunks.fetchCountryNames()).then(() => {
-      dispatch(thunks.fetchRandomCountries());
-    });
-  }, [dispatch]);
-
   return (
     <Layout>
-      <BotonBanderas />
+      <h1>Aqui van los componentes</h1>
     </Layout>
   );
+}
+
+export default App;
+*/}
+
+
+import React, { useEffect, useState } from "react"
+import Header from "./components/header/header"
+import Puntaje from "./components/Puntaje"
+
+const App = () => {
+
+
+  const current_theme = localStorage.getItem('current_theme');
+  const [theme, setTheme] =useState(current_theme ? current_theme : 'light');
+
+  useEffect(() => {
+    localStorage.setItem('current_theme' , theme)
+  }, [theme])
+
+  return(
+    <div className={`container ${theme}`}>
+      <Header theme={theme} setTheme={setTheme}/>
+      <Puntaje/>
+    </div>
+  
+  )
 }
 
 export default App;
