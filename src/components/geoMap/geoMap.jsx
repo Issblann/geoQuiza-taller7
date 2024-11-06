@@ -5,7 +5,7 @@ import '../../styles/geoMap/styles.css';
 const GeoMap = () => {
   const [content, setContent] = useState('');
   return (
-    <div>
+    <div className=" w-full">
       <div className="title-container">
         <h1> MAPA DEL MUNDO </h1>
       </div>

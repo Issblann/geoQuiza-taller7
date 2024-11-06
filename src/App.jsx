@@ -5,6 +5,8 @@ import Card from './components/card/flags_card';
 import Layout from './layout/layout';
 import { useEffect } from 'react';
 import { thunks } from './redux/slice/trivia/thunks';
+import AppRoutes from './routes/routes';
+import { BrowserRouter, Router } from 'react-router-dom';
 
 function App() {
   const dispatch = useDispatch();
@@ -16,10 +18,9 @@ function App() {
 
   return (
     <Layout>
-      <div className="my-auto w-full flex flex-col gap-6">
-        <Card />
-        <BotonBanderas />
-      </div>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
     </Layout>
   );
 }
