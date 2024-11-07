@@ -5,10 +5,10 @@ import instagram from '../../assets/icons/instagram.svg';
 function Footer() {
   return (
     <footer className="w-full justify-center">
-      <div className="col-12 text-center p-6 w-full">
+      <div className="col-12 text-center w-full">
         <p className="mb-4">Nuestras redes sociales</p>
-        <ul className="flex items-center w-full justify-center mb-4">
-          <li className="mx-4 p-2 text-center footer_icons">
+        <ul className="flex items-center w-full justify-center">
+          <li className="mx-2 text-center footer_icons">
             <a
               href="https://www.instagram.com"
               target="_blank"
@@ -22,7 +22,7 @@ function Footer() {
               />
             </a>
           </li>
-          <li className="mx-4 p-2 text-center footer_icons">
+          <li className="mx-2 text-center footer_icons">
             <a
               href="https://wa.me/yourwhatsapplink"
               target="_blank"
@@ -36,7 +36,7 @@ function Footer() {
               />
             </a>
           </li>
-          <li className="mx-4 p-2 text-center footer_icons">
+          <li className="mx-2 text-center footer_icons">
             <a
               href="https://www.facebook.com"
               target="_blank"
@@ -48,18 +48,6 @@ function Footer() {
                 className="img-fluid"
                 style={{ width: '24px', height: '24px' }}
               />
-            </a>
-          </li>
-        </ul>
-        <ul className="flex justify-center list-unstyled mb-4 flex-col md:flex-row">
-          <li className="mx-5">
-            <a href="" className="text-decoration-none text-dark">
-              Trivia
-            </a>
-          </li>
-          <li className="mx-5">
-            <a href="" className="text-decoration-none text-dark">
-              Mapa
             </a>
           </li>
         </ul>

@@ -32,7 +32,7 @@
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
   animation: slideIn 0.4s ease forwards;
   transform: translateY(-10px);
-  border: 5px solid #ebd1b2;
+  border: 5px solid var(--light-color);
 }
 
 @keyframes slideIn {
@@ -48,16 +48,24 @@
 
 .modal-score {
   position: absolute;
-  top: -60px;
+  top: -40px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, #ffa726, #fb8c00);
-  color: #fff;
+  background: linear-gradient(135deg, #3f6491, #6fdfcb);
+  color: whitesmoke;
   padding: 10px 30px;
-  border-radius: 80px;
-  font-size: 3em;
+  border-radius: 100px;
+  font-size: 2em;
   font-family: 'Anton SC', sans-serif;
-  box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.4);
+  box-shadow: 0px 4px 10px rgba(186, 190, 228, 0.4);
+}
+
+.modal-score-text {
+  display: none;
+  font-size: 1.4em;
+  color: #3f6491;
+  margin-top: 10px;
+  font-family: 'Anton SC', sans-serif;
 }
 
 h2 {
@@ -72,7 +80,7 @@ h2 {
 .modal-countries {
   display: flex;
   justify-content: space-around;
-  margin: 20px 0;
+  margin: 5px 0;
   gap: 10px;
   flex-wrap: wrap;
 }
@@ -84,7 +92,7 @@ h2 {
   background: #f5f5f5;
   border-radius: 10px;
   padding: 15px;
-  width: 45%; /* Ancho por defecto */
+  width: 45%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -104,7 +112,7 @@ h2 {
 .country p {
   font-weight: bold;
   color: #5a5a5a;
-  margin: 3px 0;
+  margin: 2px 2px;
 }
 
 h1 {
@@ -129,7 +137,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .modal-share-icon {
@@ -139,17 +147,17 @@ h1 {
 }
 
 .modal-share-icon:hover {
-  color: #fb8c00;
+  color: var(--primary-color);
   transform: scale(1.1);
 }
 
 .modal-retry-button {
-  background-color: #ff4b5c;
+  background: linear-gradient(135deg, #3f6491, #6fdfcb);
   color: white;
   padding: 10px 70px;
   border: none;
   border-radius: 20px;
-  margin-top: 5px;
+  margin-top: 10px;
   cursor: pointer;
   font-size: 1.5em;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -158,45 +166,77 @@ h1 {
 }
 
 .modal-retry-button:hover {
-  background-color: #e04652;
   transform: translateY(-3px);
 }
 
 @media (max-width: 768px) {
   .modal-content {
-    padding: 15px;
-    width: 80%;
+    padding: 10px;
+    width: 70%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto; 
   }
 
   .modal-score {
-    font-size: 2.5em;
+    display: none;
+  }
+
+  .modal-score-text {
+    display: block;
   }
 
   h2 {
-    font-size: 1.5em;
+    font-size: 1.4em;
+    margin-top: 10px;
   }
 
   .modal-countries {
     flex-direction: column;
     align-items: center;
+    gap: 5px;
   }
 
   .country {
     width: 90%;
-    margin-bottom: 10px;
+    padding: 8px;
+    margin-bottom: 5px;
+  }
+
+  .modal-retry-button {
+    padding: 8px 0;
+    width: 90%;
+    font-size: 1.3em;
   }
 }
 
 @media (max-width: 480px) {
   .modal-content {
-    width: 95%;
+    width: 85%;
+    max-width: 350px;
+    max-height: 75vh;
+    padding: 8px;
   }
 
   .modal-score {
-    font-size: 2em;
+    font-size: 1.6em;
+    top: -30px;
+    padding: 8px 25px;
+  }
+
+  h2 {
+    font-size: 1.2em;
+    margin-top: 5px;
+  }
+
+  .country {
+    width: 95%;
+    padding: 6px;
   }
 
   .modal-retry-button {
+    padding: 8px;
     width: 100%;
+    font-size: 1.2em;
   }
 }

@@ -4,6 +4,8 @@ import '../../styles/modalTrivia/styles.css';
 
 const Modal = ({ showModal, onClose, score, currentCountry, incorrectOption }) => {
   const [visible, setVisible] = useState(false);
+  const gameUrl = window.location.href;
+  const shareText = `¡Mi puntaje es ${score}! ¿Puedes superarlo? Juega aquí: ${gameUrl}`;
 
   useEffect(() => {
     setVisible(showModal);
@@ -24,6 +26,9 @@ const Modal = ({ showModal, onClose, score, currentCountry, incorrectOption }) =
           <span>{score}</span>
         </div>
         <h2>Oh no! Fallaste</h2>
+        <div className="modal-score-text">
+          Puntos: {score}
+        </div>
         <div className="modal-countries">
           {currentCountry && (
             <div className="country">
@@ -58,16 +63,36 @@ const Modal = ({ showModal, onClose, score, currentCountry, incorrectOption }) =
         </div>
         <p>Invita a tus amigos a participar</p>
         <div className="modal-share">
-          <a href="https://twitter.com/share" target="_blank" rel="noopener noreferrer" className="modal-share-icon">
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="modal-share-icon"
+          >
             <FaTwitter size={24} />
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="modal-share-icon">
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(gameUrl)}&quote=${encodeURIComponent(shareText)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="modal-share-icon"
+          >
             <FaFacebook size={24} />
           </a>
-          <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" className="modal-share-icon">
+          <a
+            href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(gameUrl)}&description=${encodeURIComponent(shareText)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="modal-share-icon"
+          >
             <FaPinterest size={24} />
           </a>
-          <a href="https://wa.me/?text=¡Mira+este+desafío!" target="_blank" rel="noopener noreferrer" className="modal-share-icon">
+          <a
+            href={`https://wa.me/?text=${encodeURIComponent(shareText)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="modal-share-icon"
+          >
             <FaWhatsapp size={24} />
           </a>
         </div>

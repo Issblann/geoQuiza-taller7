@@ -9,7 +9,7 @@ svg {
   align-items: center;
   border-radius: 10px;
   color: white;
-  background-color: var(--primary-color);
+
   width: 40%;
   margin: 0 auto;
 }

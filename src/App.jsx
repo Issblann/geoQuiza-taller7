@@ -1,14 +1,14 @@
-import { useDispatch } from 'react-redux';
 import './App.css';
-import BotonBanderas from './components/botonBanderas/boton-banderas';
-import Card from './components/card/flags_card';
 import Layout from './layout/layout';
-import { useEffect } from 'react';
-import { thunks } from './redux/slice/trivia/thunks';
-import AppRoutes from './routes/routes';
-import { BrowserRouter, Router } from 'react-router-dom';
 
-function App() {
+import AppRoutes from './routes/routes';
+import { BrowserRouter } from 'react-router-dom';
+
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { thunks } from './redux/slice/trivia/thunks';
+
+const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(thunks.fetchCountryNames()).then(() => {
@@ -17,12 +17,12 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Layout>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Layout>
         <AppRoutes />
-      </BrowserRouter>
-    </Layout>
+      </Layout>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
