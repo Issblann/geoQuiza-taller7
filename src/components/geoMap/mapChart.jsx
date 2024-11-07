@@ -15,7 +15,7 @@ const MapChart = ({ setTooltipContent }) => {
           rotate: [-10, 0, 0],
           scale: 147,
         }}
-        height={450}
+        height={500}
       >
         <ZoomableGroup>
           <Sphere stroke="#E4E5E6" strokeWidth={0.5} />

@@ -5,10 +5,8 @@ import '../../styles/geoMap/styles.css';
 const GeoMap = () => {
   const [content, setContent] = useState('');
   return (
-    <div className=" w-full">
-      <div className="title-container">
-        <h1> MAPA DEL MUNDO </h1>
-      </div>
+    <div className="w-full mt-40">
+      <h1 className="text-4xl md:text-7xl"> MAPA DEL MUNDO </h1>
 
       <MapChart setTooltipContent={setContent} />
       <ReactTooltip
