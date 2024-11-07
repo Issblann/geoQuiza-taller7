@@ -1,0 +1,25 @@
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--primary-color);
+  width: 40%;
+  margin: 0 auto;
+}
+h1 {
+  font-weight: bold;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .title-container {
+    width: 100%;
+  }
+}

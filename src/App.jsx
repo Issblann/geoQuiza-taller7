@@ -1,38 +1,28 @@
-{/*import './App.css';
+import './App.css';
 import Layout from './layout/layout';
-function App() {
-  return (
-    <Layout>
-      <h1>Aqui van los componentes</h1>
-    </Layout>
-  );
-}
 
-export default App;
-*/}
+import AppRoutes from './routes/routes';
+import { BrowserRouter } from 'react-router-dom';
 
-
-import React, { useEffect, useState } from "react"
-import Header from "./components/header/header"
-import Puntaje from "./components/Puntaje"
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { thunks } from './redux/slice/trivia/thunks';
 
 const App = () => {
-
-
-  const current_theme = localStorage.getItem('current_theme');
-  const [theme, setTheme] =useState(current_theme ? current_theme : 'light');
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    localStorage.setItem('current_theme' , theme)
-  }, [theme])
+    dispatch(thunks.fetchCountryNames()).then(() => {
+      dispatch(thunks.fetchRandomCountries());
+    });
+  }, [dispatch]);
 
-  return(
-    <div className={`container ${theme}`}>
-      <Header theme={theme} setTheme={setTheme}/>
-      <Puntaje/>
-    </div>
-  
-  )
-}
+  return (
+    <BrowserRouter>
+      <Layout>
+        <AppRoutes />
+      </Layout>
+    </BrowserRouter>
+  );
+};
 
 export default App;
