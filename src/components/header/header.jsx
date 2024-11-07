@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../styles/header/styles.css';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../../assets/logo1-1.png';
+import logo from '../../assets/icons/logo1-1.png';
 import { IoMenu } from 'react-icons/io5';
 import { FaMap, FaPlayCircle } from 'react-icons/fa';
 export const Header = () => {
