@@ -1,16 +1,13 @@
-
+import { useSelector } from 'react-redux';
 
 const Puntaje = () => {
-    
-    const { score } =
-    useSelector((state) => state.trivia);
+  const { score } = useSelector((state) => state.trivia);
 
-return (
+  return (
     <div className="Puntaje">
-        <h2>Score: 100</h2>
+      <h2>Score: 100</h2>
     </div>
-);
-
-}
+  );
+};
 
 export default Puntaje;

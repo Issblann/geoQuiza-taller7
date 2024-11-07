@@ -1,48 +1,54 @@
-import React from 'react';
-import './header.css'
-import logo from '../../assets/logo1-1.png'
-import logo_dark from '../../assets/logo-d.png'
-import search_icon_light from '../../assets/search-w.png'
-import search_icon_dark from '../../assets/search-b.png'
-import play_icon_light from '../../assets/play-w.png'
-import play_icon_dark from '../../assets/play-b.png'
-import toogle_light from '../../assets/night.png'
-import toogle_dark from '../../assets/day.png'
+import React, { useState } from 'react';
+import '../../styles/header/styles.css';
+import { Link, useLocation } from 'react-router-dom';
+import logo from '../../assets/logo1-1.png';
+import { IoMenu } from 'react-icons/io5';
+import { FaMap, FaPlayCircle } from 'react-icons/fa';
+export const Header = () => {
+  const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
-const Header = ({theme, setTheme}) => {
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
-  const toggle_mode =() =>{
-    theme == 'light' ? setTheme('dark') : setTheme('light')
-  }
+  const handleLinkClick = () => {
+    if (isOpen) {
+      toggleMenu();
+    }
+  };
 
   return (
-    <div className='header'>
-      
-      <img src={theme == 'light' ? logo : logo_dark} alt='' className='logo'/>
+    <nav className="navbar">
+      <div className="navbar-content">
+        <img src={logo} alt="Logo" className="logo" />
 
-      <ul>
-        <li>Aprende</li>
-        <li>Recursos</li>
-        <li>Herramientas</li>
+        <div className={`nav-links ${isOpen ? 'open' : ''}`}>
+          <ul>
+            <Link to="/" onClick={handleLinkClick}>
+              <li className="play">
+                <button>
+                  <FaPlayCircle size={24} className="mr-2" />
+                  Juega
+                </button>
+              </li>
+            </Link>
+            <Link to="/mapa" onClick={handleLinkClick}>
+              <li className="play">
+                <button>
+                  <FaMap size={24} className="mr-2" />
+                  Descubre
+                </button>
+              </li>
+            </Link>
+          </ul>
+        </div>
 
-      </ul>
-
-      <div className='search-box'> {/*boton de busqueda*/}
-        <input type='text' placeholder='Search'></input>
-        <img src={theme == 'light' ? search_icon_light : search_icon_dark} alt=''></img>
+        <div className="hamburger" onClick={toggleMenu}>
+          <IoMenu size={50} />
+        </div>
       </div>
-
-      <div className='play'> {/*boton de jugar*/}
-      <img src={theme === 'light' ? play_icon_light : play_icon_dark} alt='' />
-        <button>
-          JUEGA
-        </button>
-      </div>
-
-      <img onClick={() => {toggle_mode()}} src={theme == 'light' ? toogle_light : toogle_dark} alt='' className='toggle-icon'></img> {/*Opción de modo oscuro-claro*/}
-
-      
-    </div>
+    </nav>
   );
 };
 
