@@ -4,7 +4,7 @@ import Layout from './layout/layout';
 import AppRoutes from './routes/routes';
 import { BrowserRouter } from 'react-router-dom';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { thunks } from './redux/slice/trivia/thunks';
 
