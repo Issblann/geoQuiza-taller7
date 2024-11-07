@@ -17,7 +17,7 @@ const Modal = ({ showModal, onClose, score, currentCountry, incorrectOption }) =
   };
 
   if (!visible) return null;
-  
+  const isWinningScore = score === 261;
 
   return (
     <div className="modal-overlay">
@@ -25,7 +25,11 @@ const Modal = ({ showModal, onClose, score, currentCountry, incorrectOption }) =
         <div className="modal-score">
           <span>{score}</span>
         </div>
-        <h2>Oh no! Fallaste</h2>
+        {isWinningScore ? (
+          <h2>¡Felicitaciones! ¡Alcanzaste el puntaje perfecto de 261!</h2>
+        ) : (
+          <h2>Oh no! Fallaste</h2>
+        )}
         <div className="modal-score-text">
           Puntos: {score}
         </div>
@@ -45,7 +49,7 @@ const Modal = ({ showModal, onClose, score, currentCountry, incorrectOption }) =
               </a>
             </div>
           )}
-          {incorrectOption && (
+          {!isWinningScore && incorrectOption && (
             <div className="country">
               <img src={incorrectOption.flag} alt={incorrectOption.name} />
               <h1>{incorrectOption.name}</h1>
@@ -97,7 +101,7 @@ const Modal = ({ showModal, onClose, score, currentCountry, incorrectOption }) =
           </a>
         </div>
         <button onClick={handleClose} className="modal-retry-button">
-          Volver a Jugar
+          {isWinningScore ? 'Jugar de Nuevo' : 'Volver a Jugar'}
         </button>
       </div>
     </div>
